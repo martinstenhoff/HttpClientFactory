@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.Http.Logging
 {
     public class LoggingScopeHttpMessageHandler : DelegatingHandler
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         public LoggingScopeHttpMessageHandler(ILogger logger)
         {

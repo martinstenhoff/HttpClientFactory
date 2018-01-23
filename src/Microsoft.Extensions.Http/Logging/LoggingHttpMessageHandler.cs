@@ -14,16 +14,11 @@ namespace Microsoft.Extensions.Http.Logging
 {
     public class LoggingHttpMessageHandler : DelegatingHandler
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         public LoggingHttpMessageHandler(ILogger logger)
         {
-            if (logger == null)
-            {
-                throw new ArgumentNullException(nameof(logger));
-            }
-
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
